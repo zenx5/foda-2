@@ -6,7 +6,7 @@ interface CardProps {
     styleTitle: any;
 }
 
-const Card = ( { title, items, styleTitle }:CardProps ) => {
+export default function Card ( { title, items, styleTitle }:CardProps ) {
   return (
     <View style={{width:'50%', border:'3px solid black', backgroundColor:'#e2e8f0' }}>
         <Text style={styleTitle}>{title}</Text>
@@ -18,5 +18,3 @@ const Card = ( { title, items, styleTitle }:CardProps ) => {
     </View>
   )
 }
-
-export default Card

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Card from './Card';
 import { Text, Document, Page, View, PDFViewer } from '@react-pdf/renderer';
 
@@ -8,7 +7,7 @@ interface DocPDFProps {
   title: string;
 }
 
-const DocPDF = ( { items, title }:DocPDFProps ) => {
+export default function DocPDF( { items, title }:DocPDFProps ) {
 
   return (<PDFViewer>
     <Document>
@@ -26,5 +25,3 @@ const DocPDF = ( { items, title }:DocPDFProps ) => {
     </Document>
   </PDFViewer>
 )}
-
-export default DocPDF;

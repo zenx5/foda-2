@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useState, ChangeEvent, FormEvent } from "react"
 import Item from "./Item"
 
 interface FieldProps {
@@ -11,11 +11,11 @@ interface FieldProps {
 export default function Field( { head, items=[], color, onChange }:FieldProps ) {
     const [input, setInput]=useState('')
 
-    const handleChange=(event:React.ChangeEvent<HTMLInputElement>)=>{
+    const handleChange=(event:ChangeEvent<HTMLInputElement>)=>{
         setInput(event.target.value)
     }
 
-    const handleSubmit = (event:React.FormEvent) => {
+    const handleSubmit = (event:FormEvent) => {
         event.preventDefault()
         onChange && onChange(head, [...items, input])
         setInput('')

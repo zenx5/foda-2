@@ -1,13 +1,9 @@
 'use client'
 import { useEffect, useState } from "react"
 import { experimental_useObject as useObject } from "ai/react"
-import DocPDF from "../components/DocPDF"
-import Field from "../components/Field"
 import ProjectDescription from "../components/ProjectDescription"
 import FodaFields from "@/section/FodaFields"
 import { fodaSchema } from "./api/foda-fields/schema"
-import DownloadButton from "@/components/DownloadButton"
-
 
 
 export default function Home() {
@@ -43,7 +39,7 @@ export default function Home() {
   }
 
   return <>
-        <ProjectDescription title={object?.title as string} items={foda} value={description} onChange={(value:string)=>setDescription(value)} onSend={()=>submit({value:description})}/>
-        <FodaFields response={foda} onChange={handlerChange}/>
-      </>
+    <ProjectDescription title={object?.title as string} items={foda} value={description} onChange={(value:string)=>setDescription(value)} onSend={()=>submit({value:description})}/>
+    <FodaFields response={foda} onChange={handlerChange}/>
+  </>
 }
