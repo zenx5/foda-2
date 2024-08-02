@@ -33,7 +33,7 @@ export default function Field( { head, items=[], color, onChange }:FieldProps ) 
 
     return(
         <div className="w-full p-1 bg-slate-100 h-fit">
-            <h3 className="bg-white text-center text-xl py-4 font-light first-letter:uppercase" style={{ borderColor:color, borderWidth:1, borderStyle:"solid", color }}>{head}</h3>
+            <h3 className="bg-white text-center text-xl sm:py-4 py-0 font-light first-letter:uppercase" style={{ borderColor:color, borderWidth:1, borderStyle:"solid", color }}>{head}</h3>
 
             <form onSubmit={handleSubmit} className="bg-slate-200 px-2 py-1 flex justify-between items-center gap-1">
                 <input onChange={handleChange} value={input} className="w-full bg-slate-200 text-slate-800 outline-none" type="text" placeholder={`Ingrese ${head}...`} />
