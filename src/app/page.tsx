@@ -42,14 +42,8 @@ export default function Home() {
     }))
   }
 
-  return <main className="bg-white min-h-screen text-slate-50 w-screen h-screen">
-      <div className="max-w-4xl flex flex-col items-center gap-5 pt-5 px-2 mx-auto">
-        <h1 className="text-4xl font-semibold text-slate-400">Crea una matriz <span className="text-slate-500">FODA</span> con IA</h1>
-        <ProjectDescription value={description} onChange={(value:string)=>setDescription(value)} onSend={()=>submit({value:description})}/>
+  return <>
+        <ProjectDescription title={object?.title as string} items={foda} value={description} onChange={(value:string)=>setDescription(value)} onSend={()=>submit({value:description})}/>
         <FodaFields response={foda} onChange={handlerChange}/>
-        {/* <div>
-          <DownloadButton document={<DocPDF title={object?.title as string} items={object as FODATypes} />} />
-        </div> */}
-      </div>
-  </main>
+      </>
 }
