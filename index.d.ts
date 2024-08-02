@@ -1,6 +1,6 @@
 interface FODATypes {
-    Amenazas: string[];
-    Fortalezas: string[];
-    Debilidades: string[];
-    Oportunidades: string[];
+    strengths: string[];
+    weaknesses: string[];
+    threats: string[];
+    opportunities: string[];
 }

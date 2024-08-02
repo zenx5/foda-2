@@ -11,7 +11,7 @@ export async function POST(req: Request) {
   const result = await streamObject({
     model:  google("models/gemini-1.5-pro-latest"),
     schema: fodaSchema,
-    prompt: `Genera la matriz foda con 3 items diferentes en cada campo para ` + context.value,
+    prompt: `Genera la matriz foda con varios items diferentes como mínimo en cada campo para ` + context.value + ` y sugiere un nombre como titulo para un documento PDF donde lo imprimiré`,
   })
 
   return result.toTextStreamResponse()
