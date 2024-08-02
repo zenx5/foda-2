@@ -50,7 +50,7 @@ export default function Home() {
           <Field head="Fortalezas" bgHead="bg-emerald-900" onChange={handlerChange}/>
           <Field head="Debilidades" bgHead="bg-yellow-900" onChange={handlerChange}/>
           <Field head="Oportunidades" bgHead="bg-cyan-900" onChange={handlerChange}/>
-        </section>        
+        </section>
       </main>
   </div>
   );
