@@ -1,5 +1,5 @@
 import { createOpenAI } from '@ai-sdk/openai'
-import { createGoogleGenerativeAI } from "@ai-sdk/google"
+import { createGoogleGenerativeAI, google } from "@ai-sdk/google"
 import { streamObject } from 'ai'
 import { fodaSchema } from './schema'
 
@@ -10,8 +10,6 @@ export async function POST(req: Request) {
   const context = await req.json()
 
   const model = getModel(context.provider, context.model, context.apikey)
-
-  if(!model) return new Response('Provider not found', { status: 400 })
 
   const result = await streamObject({
     model,
@@ -25,4 +23,5 @@ export async function POST(req: Request) {
 function getModel(provider:string, model:string, apiKey:string) {
   if( provider === 'openai' ) return createOpenAI({ apiKey })(model)
   if( provider === 'google' ) return createGoogleGenerativeAI({ apiKey })(model)
+  return google("models/gemini-1.5-pro-latest")
 }
