@@ -10,7 +10,7 @@ interface DownloadPdfProps {
 export default function DownloadPdf({ title, items }: DownloadPdfProps) {
 
     const handlerDownload = () => {
-        var obj = new jsPDF('landscape');
+        var obj = new jsPDF('landscape') as jsPDF & { autoTable: any }
         obj.setFontSize(18);
         obj.text(title, 20, 20);
         obj.setFontSize(12);
