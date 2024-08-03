@@ -1,14 +1,11 @@
 'use client'
 import { useEffect, useState } from "react"
 import { experimental_useObject as useObject } from "ai/react"
-import DocPDF from "../components/DocPDF"
-import Field from "../components/Field"
 import ProjectDescription from "../components/ProjectDescription"
 import FodaFields from "@/section/FodaFields"
 import { fodaSchema } from "./api/foda-fields/schema"
-import DownloadButton from "@/components/DownloadButton"
-
-
+import ProviderSelector from "@/components/ProviderSelector"
+import DownloadPdf from "@/components/DownloadPdf"
 
 export default function Home() {
   const [description, setDescription] = useState<string>("")
@@ -18,7 +15,10 @@ export default function Home() {
     opportunities: [],
     threats: []
   })
-  const { object, submit } = useObject({
+  const [apiKey, setApiKey] = useState("")
+  const [model, setModel] = useState("")
+  const [provider, setProvider] = useState("")
+  const { object, submit, isLoading } = useObject({
     api:'/api/foda-fields',
     schema:fodaSchema
   })
@@ -42,8 +42,29 @@ export default function Home() {
     }))
   }
 
+  const handlerChangeModel = (key:string, value:string) => {
+    if( key==='provider' ) setProvider(value)
+    if( key==='model' ) setModel(value)
+    if( key==='apikey' ) setApiKey(value)
+  }
+
   return <>
-        <ProjectDescription title={object?.title as string} items={foda} value={description} onChange={(value:string)=>setDescription(value)} onSend={()=>submit({value:description})}/>
-        <FodaFields response={foda} onChange={handlerChange}/>
-      </>
+    <ProjectDescription
+      value={description}
+      loading={isLoading}
+      onChange={(value:string)=>setDescription(value)}
+      onSend={()=>submit({
+        value:description,
+        provider,
+        model,
+        apiKey
+      })}
+      primaryActions={ (object?.title && <DownloadPdf title={object?.title as string} items={foda} />) as JSX.Element }
+      secondaryActions={<ProviderSelector onChange={handlerChangeModel} />}
+      />
+    <FodaFields response={foda} onChange={handlerChange}/>
+    <span className="inline sm:hidden">
+      <ProviderSelector onChange={handlerChangeModel} />
+    </span>
+  </>
 }
