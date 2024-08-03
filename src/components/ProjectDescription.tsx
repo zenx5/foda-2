@@ -1,16 +1,15 @@
 import { ChangeEvent } from "react"
 
 interface ProjectNameProps {
-    title: string
     value: string
-    items: FODATypes
+    loading: boolean
     primaryActions?: JSX.Element
     secondaryActions?: JSX.Element
     onChange?: (value: string) => void
     onSend: () => void
 }
 
-export default function ProjectDescription( { value, primaryActions, secondaryActions, onChange, onSend }:ProjectNameProps ) {
+export default function ProjectDescription( { value, loading, primaryActions, secondaryActions, onChange, onSend }:ProjectNameProps ) {
 
     const handleChange = (event:ChangeEvent<HTMLTextAreaElement>) => {
         onChange && onChange(event.target.value)
@@ -20,6 +19,7 @@ export default function ProjectDescription( { value, primaryActions, secondaryAc
         <textarea
             onChange={handleChange}
             value={value}
+            disabled={loading}
             className="outline-none w-full bg-slate-200 py-2 px-4 text-slate-800"
             placeholder="Ej: Fabrica de iglus en el desierto del sahara" />
         <div className="flex flex-row sm:justify-between justify-end gap-2 items-center">
@@ -28,7 +28,7 @@ export default function ProjectDescription( { value, primaryActions, secondaryAc
             </span>
             <span className="flex flex-row items-center gap-1">
                 { primaryActions }
-                <button onClick={onSend} className="bg-blue-400 text-white py-1 px-5 rounded">Enviar</button>
+                <button onClick={onSend} disabled={loading} className="bg-blue-400 text-white disabled:bg-blue-200 py-1 px-5 rounded">{ loading ? 'Enviando...' : 'Enviar'}</button>
             </span>
         </div>
     </div>

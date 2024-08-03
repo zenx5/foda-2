@@ -18,7 +18,7 @@ export default function Home() {
   const [apiKey, setApiKey] = useState("")
   const [model, setModel] = useState("")
   const [provider, setProvider] = useState("")
-  const { object, submit } = useObject({
+  const { object, submit, isLoading } = useObject({
     api:'/api/foda-fields',
     schema:fodaSchema
   })
@@ -50,9 +50,8 @@ export default function Home() {
 
   return <>
     <ProjectDescription
-      title={object?.title as string}
-      items={foda}
       value={description}
+      loading={isLoading}
       onChange={(value:string)=>setDescription(value)}
       onSend={()=>submit({
         value:description,
