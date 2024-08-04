@@ -1,11 +1,13 @@
-'use client'
+"use client"
 import { useEffect, useState } from "react"
 import { experimental_useObject as useObject } from "ai/react"
-import ProjectDescription from "../components/ProjectDescription"
+import ProjectDescription from "../../components/ProjectDescription"
 import FodaFields from "@/section/FodaFields"
-import { fodaSchema } from "./api/foda-fields/schema"
+import { fodaSchema } from "../api/foda-fields/schema"
 import ProviderSelector from "@/components/ProviderSelector"
 import DownloadPdf from "@/components/DownloadPdf"
+import { SelectLang } from "@/components/SelectLang"
+import { useTranslations } from "next-intl"
 
 export default function Home() {
   const [description, setDescription] = useState<string>("")
@@ -35,6 +37,8 @@ export default function Home() {
     }
   },[object])
 
+  const t = useTranslations("HomePage")
+
   const handlerChange = (key: string, items: string[]) => {
     setFoda( prev => ({
       ...prev,
@@ -61,7 +65,7 @@ export default function Home() {
       })}
       primaryActions={ (object?.title && <DownloadPdf title={object?.title as string} items={foda} />) as JSX.Element }
       secondaryActions={<ProviderSelector onChange={handlerChangeModel} />}
-      />
+    />
     <FodaFields response={foda} onChange={handlerChange}/>
     <span className="inline sm:hidden">
       <ProviderSelector onChange={handlerChangeModel} />
