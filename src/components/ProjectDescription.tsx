@@ -31,7 +31,7 @@ export default function ProjectDescription( { value, loading, primaryActions, se
             </span>
             <span className="flex flex-row items-center gap-1">
                 { primaryActions }
-                <button onClick={onSend} disabled={loading} className="bg-blue-400 text-white disabled:bg-blue-200 py-1 px-5 rounded">{ loading ? t('Enviando...') : t('Enviar')}</button>
+                <button onClick={onSend} disabled={loading} className="bg-blue-400 text-white disabled:bg-blue-200 py-1 px-5 rounded">{ loading ? `${t('Enviando')}...` : t('Enviar')}</button>
             </span>
         </div>
     </div>
