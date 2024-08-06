@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 export default function ButtonDarkMode() {
     const [theme, setTheme]=useState(()=>{
-        if(window.matchMedia('(prefers-color-scheme:dark)').matches){
+        if(window && window?.matchMedia('(prefers-color-scheme:dark)')?.matches ){
             return 'dark'
         }
         return 'light'
@@ -19,7 +19,6 @@ export default function ButtonDarkMode() {
         setTheme((prevTheme) => prevTheme=='light'?'dark':'light' )
     }
 
-     
     return (
         <div className="fixed top-4 right-4 cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full p-1">  
             <svg onClick={handleChangeTheme} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 stroke-gray-700 dark:hidden">
