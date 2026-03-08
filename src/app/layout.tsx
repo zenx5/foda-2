@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ButtonDarkMode from "@/components/ButtonDarkMode";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,13 +14,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <main className="bg-white text-slate-50">
+      <body className="dark:bg-slate-900 min-h-screen">
+        <main className="bg-white text-slate-50 dark:bg-slate-900">
           <h1 className="text-center text-4xl mt-10 font-semibold text-slate-400">Crea una matriz <span className="text-slate-500">FODA</span> con IA</h1>
           <div className="fixed sm:relative max-w-4xl w-full flex h-[-webkit-fill-available] sm:h-auto sm:flex-col flex-col-reverse items-center justify-start gap-5 pt-5 sm:px-2 px-0 mx-auto">
             {children}
           </div>
         </main>
+        <ButtonDarkMode />
       </body>
     </html>
   );

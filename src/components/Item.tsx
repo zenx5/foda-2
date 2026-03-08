@@ -11,7 +11,7 @@ export default function Item( { value, onChange, onDelete }:ItemProps ) {
         onChange && onChange(event.target.value)
     }
 
-    return <li className="flex justify-between items-center my-2 text-slate-800 py-1 px-2 gap-2">
+    return <li className="flex justify-between items-center my-2 text-slate-800 dark:text-slate-200 py-1 px-2 gap-2">
         <span className="w-full">
             <input type="text" className="bg-transparent outline-0 w-full" value={value} onChange={handlerChange} />
         </span>

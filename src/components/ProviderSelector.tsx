@@ -19,7 +19,7 @@ export default function ProviderSelector({ onChange }: { onChange: (key: string,
 
     return <div className="flex sm:flex-row flex-col gap-1">
         <select
-            className="bg-slate-200 text-slate-800 px-2 py-1 rounded w-full"
+            className="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-50 px-2 py-1 rounded w-full"
             value={provider}
             onChange={(event) => handlerChange('provider',event.target.value)}
         >
@@ -27,7 +27,7 @@ export default function ProviderSelector({ onChange }: { onChange: (key: string,
             { providers.map( provider => <option key={provider.value} value={provider.value}>{provider.label}</option>)}
         </select>
         <select
-            className="bg-slate-200 text-slate-800 px-2 py-1 rounded w-full"
+            className="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-50 px-2 py-1 rounded w-full"
             onChange={(event) => handlerChange('model', event.target.value)}
         >
             <option value="">Modelo</option>
@@ -35,7 +35,7 @@ export default function ProviderSelector({ onChange }: { onChange: (key: string,
         </select>
         <input
             type="text"
-            className="bg-slate-200 text-slate-800 px-2 py-1 rounded w-full"
+            className="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-50 px-2 py-1 rounded w-full"
             placeholder="API Key"
             onChange={event => handlerChange('apikey',event.target.value)}
         />

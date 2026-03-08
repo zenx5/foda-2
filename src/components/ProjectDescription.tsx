@@ -20,7 +20,7 @@ export default function ProjectDescription( { value, loading, primaryActions, se
             onChange={handleChange}
             value={value}
             disabled={loading}
-            className="outline-none w-full bg-slate-200 py-2 px-4 text-slate-800"
+            className="outline-none w-full bg-slate-200 dark:bg-slate-700 py-2 px-4 text-slate-800 dark:text-slate-50"
             placeholder="Ej: Fabrica de iglus en el desierto del sahara" />
         <div className="flex flex-row sm:justify-between justify-end gap-2 items-center">
             <span className="sm:flex hidden flex-row gap-1">
